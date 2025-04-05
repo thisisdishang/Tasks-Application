@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.finlogic.service;
+package com.finlogic.task.service.impl;
+
+import com.finlogic.task.service.TaskService;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author disha
  */
-public interface TaskService {
+@Service
+public class TaskServiceImpl implements TaskService{
     
 }
