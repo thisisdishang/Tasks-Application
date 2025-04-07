@@ -4,10 +4,12 @@
  */
 package com.finlogic.task.service;
 
+import java.util.List;
+
 /**
  *
  * @author disha
  */
 public interface TaskService {
-    
+    List users();
 }

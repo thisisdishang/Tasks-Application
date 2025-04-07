@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  *
  * @author disha
  */
+
 @Component
 public class Tasks {
 

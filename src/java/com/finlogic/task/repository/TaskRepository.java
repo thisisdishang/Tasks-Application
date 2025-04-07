@@ -4,10 +4,13 @@
  */
 package com.finlogic.task.repository;
 
+import java.util.List;
+
 /**
  *
  * @author disha
  */
 public interface TaskRepository {
-    
+
+    List users();
 }
