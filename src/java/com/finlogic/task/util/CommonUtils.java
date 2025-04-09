@@ -18,5 +18,5 @@ public class CommonUtils {
         String formattedInstant = formatter.format(instant);
         return formattedInstant;
     }
-
+    
 }
