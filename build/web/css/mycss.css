@@ -6,4 +6,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : 10 Apr 2025, 4:38:49 pm
     Author     : disha
 */
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+#load {
+    max-height: 500px;
+    overflow-y: auto;
+    width: 100%;
+    padding: 1rem;
+}
 
