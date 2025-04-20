@@ -19,3 +19,4 @@ function ajaxCall(method, url, data, isAsync, destination) {
     xhttp.send(data);
 }
 
+var urls = getAllUrls();
