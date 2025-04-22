@@ -1,6 +1,9 @@
 com.finlogic.task.config.ProjectConfig=org.springframework.stereotype.Component
+com.finlogic.task.controller.LoginController=org.springframework.stereotype.Component
 com.finlogic.task.controller.TaskController=org.springframework.stereotype.Component
 com.finlogic.task.model.Tasks=org.springframework.stereotype.Component
 com.finlogic.task.model.TasksUser=org.springframework.stereotype.Component
 com.finlogic.task.repository.impl.TaskRepositoryImpl=org.springframework.stereotype.Component
+com.finlogic.task.repository.impl.UserRepositoryImpl=org.springframework.stereotype.Component
 com.finlogic.task.service.impl.TaskServiceImpl=org.springframework.stereotype.Component
+com.finlogic.task.service.impl.UserServiceImpl=org.springframework.stereotype.Component
