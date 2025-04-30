@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
-// 
+
 // ajax call to the server
 // Asynchronous JavaScript and XML
 
@@ -151,7 +151,11 @@ function updateData() {
 
     if (result) {
         var updateForm = document.getElementById('updateForm');
+
+        updateHiddenDate();
+
         var data = getFormData(updateForm);
+        data.TASK_END_DATE = document.getElementById("enddate").value; // ⬅️ important line
 
         var userRole = "<%= user.getROLE() %>";
         if (userRole === "Employee") {
@@ -205,8 +209,12 @@ function DeleteTask(taskId) {
 }
 
 function updateHiddenDate() {
-    var selectedDate = document.getElementById("taskEndDate").value;
-    document.getElementById("enddate").value = selectedDate;
+    var endDateInput = document.getElementById("taskEndDate");
+    var hiddenEndDate = document.getElementById("enddate");
+
+    if (endDateInput && hiddenEndDate) {
+        hiddenEndDate.value = endDateInput.value;
+    }
 }
 
 function importTasks() {

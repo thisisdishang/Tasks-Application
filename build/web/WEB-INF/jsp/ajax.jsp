@@ -82,7 +82,7 @@
                 <input type="hidden" name="enddate" value="" id="enddate">
                 <input type="date" id="taskEndDate" name="taskEndDate"
                        class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight" 
-                       placeholder="Select Task End Date" onchange="updateHiddenDate()">
+                       placeholder="Select Task End Date" onchange="updateHiddenDate()" min="<%= java.time.LocalDate.now()%>">
             </div>
 
             <div class="flex items-center justify-between">
@@ -105,22 +105,23 @@
 
 <c:if test="${process eq 'viewtasks'}">
     <div class="p-6">
-        <div class="grid grid-cols-2 gap-4 bg-white p-4 rounded-lg shadow-md">
-            <form id="importForm" enctype="multipart/form-data" class="flex items-center space-x-2">
-                <input type="file" name="file" id="fileInput" accept=".xls,.xlsx" required 
-                       class="w-50 border border-gray-400 rounded-md p-1 text-gray-700 focus:ring-2 focus:ring-blue-500">
-                <button type="button" onclick="importTasks()" 
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow">
-                    Import
+        <c:if test="${userRole eq 'Admin'}">
+            <div class="grid grid-cols-2 gap-4 bg-white p-4 rounded-lg shadow-md">
+                <form id="importForm" enctype="multipart/form-data" class="flex items-center space-x-2">
+                    <input type="file" name="file" id="fileInput" accept=".xls,.xlsx" required 
+                           class="w-50 border border-gray-400 rounded-md p-1 text-gray-700 focus:ring-2 focus:ring-blue-500">
+                    <button type="button" onclick="importTasks()" 
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow">
+                        Import
+                    </button>
+                </form>
+
+                <button onclick="window.location.href = 'task.fin?cmdAction=exportTasks'" 
+                        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-md shadow justify-self-end">
+                    Export
                 </button>
-            </form>
-
-            <button onclick="window.location.href = 'task.fin?cmdAction=exportTasks'" 
-                    class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-md shadow justify-self-end">
-                Export
-            </button>
-        </div>
-
+            </div>
+        </c:if>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <c:forEach items="${data}" var="task">
                 <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
@@ -196,13 +197,15 @@
 
                     <c:if test="${userRole ne 'Employee'}">
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="TASK_END_DATE">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="taskEndDateDisplay">
                                 Task End Date
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                                   id="TASK_END_DATE" name="TASK_END_DATE" type="text" placeholder="Task End Date" value="${task.TASK_END_DATE}">
+                            <input type="hidden" id="enddate" name="TASK_END_DATE" value="${task.TASK_END_DATE}">
+                            <input type="date" id="taskEndDate"
+                                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                   onchange="javascript:updateHiddenDate()" min="<%= java.time.LocalDate.now()%>" value="${task.TASK_END_DATE}">
                         </div>
-                    </c:if>
+                    </c:if>         
 
                     <c:if test="${userRole eq 'Employee'}">
                         <input type="hidden" id="TASK_END_DATE_HIDDEN" name="TASK_END_DATE_HIDDEN" value="${task.TASK_END_DATE}">
